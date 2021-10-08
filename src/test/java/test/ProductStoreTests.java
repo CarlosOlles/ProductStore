@@ -1,12 +1,8 @@
 package test;
 
 import helpers.Utils;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,8 +13,6 @@ import pageObject.LaptopsPageObject;
 import pageObject.MainPagePageObject;
 
 import java.time.Duration;
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -30,22 +24,17 @@ public class ProductStoreTests extends BaseUITests {
     CartPageObject cartPageObject = new CartPageObject();
     CheckoutPageObject checkoutPageObject = new CheckoutPageObject();
     Utils utils = new Utils();
-    Set<Cookie> cookies = new HashSet<>();
 
-    /*@Test
+    @Test
     @Order(1)
     @DisplayName("Browsing between categories :)")
     public void browsingBetweenCategories() {
         WebDriverWait w = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
 
-        System.out.println("START browsingBetweenCategories");
-
-        mainPagePageObject.getPhonesElement(getDriver(), w).click();
+        mainPagePageObject.getPhonesElement(getDriver()).click();
         mainPagePageObject.getLaptopsElement(getDriver(), w).click();
-        mainPagePageObject.getMonitorsElement(getDriver(), w).click();
-        System.out.println("END browsingBetweenCategories");
-
-    }*/
+        mainPagePageObject.getMonitorsElement(getDriver()).click();
+    }
 
     @Test
     @Order(2)
@@ -58,7 +47,6 @@ public class ProductStoreTests extends BaseUITests {
             e.printStackTrace();
         }
         WebDriverWait w = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-        //getDriver().manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
 
         mainPagePageObject.getLaptopsElement(getDriver(), w).click();
         laptopsPageObject.getLaptopByName(getDriver(), w, "Sony vaio i5").click();
